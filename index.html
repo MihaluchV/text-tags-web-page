@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Веб-дизайн. Текстові теги</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f5f7fb;--card:#fff;--ink:#1b2333;--mute:#5b667a;--line:#d5dbe6;--acc:#2456d6;--ok:#17803d;--okbg:#e2f5e9;--bad:#b3261e;--badbg:#fde8e6;--code:#0f1b33;--codefg:#cfe3ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1424;--card:#172036;--ink:#e8edf7;--mute:#9aa6bd;--line:#2c3855;--acc:#7aa2ff;--ok:#6fd695;--okbg:#14382a;--bad:#ff8f87;--badbg:#44211f;--code:#0a1020;--codefg:#cfe3ff}}
+:root[data-theme="dark"]{--bg:#0e1424;--card:#172036;--ink:#e8edf7;--mute:#9aa6bd;--line:#2c3855;--acc:#7aa2ff;--ok:#6fd695;--okbg:#14382a;--bad:#ff8f87;--badbg:#44211f;--code:#0a1020;--codefg:#cfe3ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:20px 16px 48px}
+h1{font:700 1.7rem/1.2 Georgia,"Times New Roman",serif;margin:0 0 4px}
+.sub{color:var(--mute);margin:0 0 14px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px}
+.score{font-weight:700;color:var(--acc)}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}
+nav button,.btn{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:8px;cursor:pointer}
+nav button[aria-selected=true]{background:var(--acc);color:#fff;border-color:var(--acc)}
+.btn.p{background:var(--acc);color:#fff;border-color:var(--acc)}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+section{display:none;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+section.on{display:block}
+.row{display:grid;grid-template-columns:1fr 150px;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.row .d small{color:var(--mute);display:block}
+.smp{background:var(--bg);border-radius:6px;padding:4px 8px;margin-top:4px;display:inline-block}
+.smp h1{font-size:1.2rem;margin:0}.smp h4{margin:0}.smp p,.smp blockquote{margin:0}.smp hr{width:120px}
+select,input[type=text],textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
+.ok{background:var(--okbg)!important;border-color:var(--ok)!important}
+.no{background:var(--badbg)!important;border-color:var(--bad)!important}
+.q{padding:12px 0;border-bottom:1px solid var(--line)}
+.q p{margin:0 0 8px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;margin:4px 0}
+.fb{margin-top:6px;font-size:.95rem}
+code,.code{font-family:Consolas,"Courier New",monospace}
+.line{background:var(--code);color:var(--codefg);border-radius:8px;padding:8px 12px;margin:6px 0}
+.hint{color:var(--mute);font-size:.9rem;margin:0 0 6px}
+.pr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.pr{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+textarea{height:260px;font-family:Consolas,"Courier New",monospace;font-size:.9rem;background:var(--code);color:var(--codefg);resize:vertical}
+.slot{display:inline-flex;min-width:84px;min-height:30px;border:2px dashed #7f8fb3;border-radius:6px;align-items:center;justify-content:center;vertical-align:middle;color:var(--ink)}
+.slot.ok{border-style:solid}.slot.no{border-style:solid}
+.mir{color:#8fa0c4}
+.line{white-space:pre-wrap}
+.bankwrap{position:sticky;bottom:0;background:var(--card);border-top:2px solid var(--line);padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px));margin-top:12px}
+#bank{display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 10px;min-height:44px}
+.chip{display:inline-block;background:var(--acc);color:#fff;padding:3px 10px;border-radius:6px;font-family:Consolas,"Courier New",monospace;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none}
+.chip.sel{outline:3px solid #ffb703}.chip.held{opacity:.35}
+.ghost{position:fixed;z-index:99;pointer-events:none;transform:translate(-50%,-50%);box-shadow:0 4px 12px #0006}
+img.ref{max-width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;display:block;margin:0 0 12px}
+iframe{width:100%;height:260px;border:1px solid var(--line);border-radius:8px;background:#fff}
+ul.ck{list-style:none;padding:0;margin:10px 0}
+ul.ck li{padding:3px 8px;border-radius:6px;margin:3px 0}
+.res{margin-top:12px;font-weight:700}
+body:not(.go) #nav,body:not(.go) section{display:none!important}body.go #reg{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><div><h1>Текстові теги HTML</h1><p class="sub">Веб-дизайн · 11 клас · повторення й застосування</p></div><div class="score" id="tot">Бали: 0</div></div>
+<div id="reg" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:12px"><h2 style="margin:0 0 8px">Розпочати роботу</h2><p class="hint">Введи прізвище, ім’я та клас, щоб розпочати.</p><p style="display:flex;gap:8px;flex-wrap:wrap"><input type="text" id="sn" maxlength="22" placeholder="Прізвище" aria-label="Прізвище" style="flex:1 1 150px;width:auto"><input type="text" id="fn" maxlength="22" placeholder="Ім’я" aria-label="Ім’я" style="flex:1 1 150px;width:auto"><input type="text" id="cl" maxlength="8" placeholder="Клас (напр. 11-А)" aria-label="Клас" style="flex:1 1 150px;width:auto"></p><p><button class="btn p" id="go">▶ Розпочати</button> <span class="res" id="regmsg"></span></p></div>
+<nav role="tablist" id="nav"></nav>
+
+<section id="s0">
+<p class="hint">Для кожного прикладу обери тег. Над прикладом — опис, під ним — те, як це виглядає в браузері.</p>
+<div id="match"></div>
+<p><button class="btn p" id="mchk">Перевірити</button> <span class="res" id="mres"></span></p>
+</section>
+
+<section id="s1"><div id="quiz"></div><p class="res" id="qres"></p></section>
+
+<section id="s2">
+<p class="hint">Перетягни теги з панелі внизу в пропуски. Тег автоматично з’явиться і в закривальній частині. Тегів більше, ніж потрібно, тож зайві залишаться на панелі. На телефоні можна торкнутися тега, а потім пропуску.</p>
+<div id="fill"></div>
+<div class="bankwrap"><div id="bank" aria-label="Панель тегів"></div>
+<button class="btn p" id="fchk">Перевірити</button> <button class="btn" id="freset">Скинути</button> <span class="res" id="fres"></span></div>
+</section>
+
+<section id="s3">
+<p><b>Завдання.</b> Відтворіть сторінку «Хімія на уроці» за зразком, використавши теги: <code>h1</code> (заголовок), <code>p</code> (абзац), <code>b</code> або <code>strong</code>, <code>i</code> або <code>em</code>, <code>mark</code>, <code>q</code>, <code>sub</code> (формула H₂O), <code>sup</code> (x²), <code>br</code> (перенос рядка) і <code>blockquote</code>, <code>pre</code> (схема реакції) та <code>abbr</code> (скорочення «ВООЗ» з поясненням). Текст можна взяти з зображення-зразка. Пишіть лише вміст <code>&lt;body&gt;</code>.</p>
+<p class="hint">Зразок — як має виглядати результат:</p>
+<img class="ref" alt="Зразок сторінки: заголовок «Хімія на уроці», абзаци з жирним і курсивом, індексами, виділенням, скороченням, цитатою, схемою реакції та блоком цитати" src="data:image/png;base64,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">
+<p class="hint">Ваш код і результат:</p>
+<div class="pr"><textarea id="ed" spellcheck="false" aria-label="Редактор HTML" placeholder="<h1>Хімія на уроці</h1>&#10;<p>...</p>"></textarea><iframe id="pv" sandbox title="Результат"></iframe></div>
+<ul class="ck" id="ck"></ul>
+<p><button class="btn p" id="pchk">Перевірити теги</button> <span class="res" id="pres"></span></p>
+</section>
+<section id="s4">
+<p class="hint">Натисни «Надіслати вчителю», щоб результат потрапив до вчителя. Підсумок формується як зображення, його можна додатково зберегти собі.</p>
+<canvas id="cv" width="900" height="660" role="img" aria-label="Підсумок результатів" style="width:100%;height:auto;border:1px solid var(--line);border-radius:8px"></canvas>
+<p><button class="btn p" id="snd">📤 Надіслати вчителю</button> <button class="btn p" id="save">Зберегти як зображення</button> <span class="res" id="sres"></span></p>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const TAGS=["abbr","address","b","big","blockquote","br","code","em","h1","h4","i","mark","p","q","small","strike","strong","sub","sup","u"];
+const sc={0:0,1:0,2:0,3:0},att={0:0,1:0,2:0,3:0};
+const names=["1. Зіставлення","2. Тест","3. Допиши код","4. Практика","5. Підсумок"];
+const upd=()=>$("#tot").textContent="Бали: "+Object.values(sc).reduce((a,b)=>a+b,0);
+const nav=$("#nav");
+names.forEach((n,i)=>{const b=document.createElement("button");b.textContent=n;b.setAttribute("role","tab");b.onclick=()=>show(i);nav.append(b)});
+function show(i){if(i==4&&window.drawSummary){drawSummary();const sb=$("#snd");if(sb){sb.disabled=false;$("#sres").textContent=""}}document.querySelectorAll("section").forEach((s,k)=>s.classList.toggle("on",k==i));[...nav.children].forEach((b,k)=>b.setAttribute("aria-selected",k==i))}
+show(0);
+
+/* 1. Зіставлення */
+const M=[
+["b","Жирний шрифт лише для вигляду, без впливу на зміст","Жирний"],
+["strong","Важлива за змістом частина тексту (за замовчуванням жирна)","Важливо"],
+["i","Курсив лише для вигляду","Курсив"],
+["em","Наголос за змістом (за замовчуванням курсив)","Наголос"],
+["u","Підкреслений текст","Підкреслено"],
+["strike","Закреслений текст (застарілий тег)","Закреслено"],
+["big","Збільшений текст (застарілий тег)","Більше"],
+["small","Зменшений текст","Менше"],
+["mark","Виділення маркером","Виділено"],
+["sub","Нижній індекс","H<sub>2</sub>O"],
+["sup","Верхній індекс","x<sup>2</sup>"],
+["q","Коротка цитата в рядку, браузер додає лапки","Цитата"],
+["blockquote","Довга цитата з відступом від краю","Довга цитата"],
+["address","Контактна інформація, зазвичай курсивом","вул. Шевченка, 1"],
+["p","Абзац тексту з відступами зверху й знизу","Абзац"],
+["br","Перенос рядка (парного тегу немає)","Рядок 1|Рядок 2"],
+["h1","Заголовок найвищого рівня","Заголовок"],
+["h4","Заголовок, розмір якого збігається зі стандартним розміром шрифту в браузері (16 px)","Заголовок"],
+["code","Фрагмент програмного коду, моноширинний шрифт","print(5)"],
+["abbr","Абревіатура; пояснення з’являється при наведенні (атрибут title)","ПК"]];
+function sample(t,x){
+ if(t=="br")return x.split("|").join("<br>");
+ if(t=="hr")return "<hr>";
+ if(t=="pre")return "<pre style='margin:0'>"+x.split("|").join("\n")+"</pre>";
+ if(t=="abbr")return `<abbr title="Персональний комп’ютер">${x}</abbr>`;
+ if(t=="sub"||t=="sup")return x;
+ return `<${t}>${x}</${t}>`;
+}
+const opts=TAGS.map(t=>`<option value="${t}">&lt;${t}&gt;</option>`).join("");
+$("#match").innerHTML=M.map((m,i)=>`<div class="row"><div class="d">${m[1]}<span class="smp">${sample(m[0],m[2])}</span></div><select data-i="${i}" aria-label="Тег ${i+1}"><option value="">— обери —</option>${opts}</select></div>`).join("");
+$("#mchk").onclick=()=>{let n=0;document.querySelectorAll("#match select").forEach(s=>{const ok=s.value==M[s.dataset.i][0];if(ok)n++;s.className=ok?"ok":"no"});sc[0]=n;att[0]=M.length;$("#mres").textContent=`Правильно: ${n} з ${M.length}`;upd()};
+
+/* 2. Тест */
+const Q=[
+["Який тег створює абзац?",["<br>","<p>","<q>","<mark>"],1,"Тег <p> задає абзац із відступами."],
+["Який із тегів не має закривального?",["<br>","<em>","<sub>","<address>"],0,"<br> — одинарний (порожній) тег."],
+["Чим <strong> відрізняється від <b>?",["Нічим, це різні назви","<strong> несе зміст важливості, <b> — лише вигляд","<b> менший за розміром","<strong> створює абзац"],1,"<strong> — логічне виділення, <b> — візуальне."],
+["Як правильно записати формулу H₂O?",["H<sup>2</sup>O","H<sub>2</sub>O","H<small>2</small>O","H<big>2</big>O"],1,"Нижній індекс — тег <sub>."],
+["Який тег призначений для довгої цитати з відступом?",["<q>","<address>","<blockquote>","<em>"],2,"<blockquote> — блочна цитата, <q> — коротка в рядку."],
+["Скільки рівнів заголовків існує в HTML?",["3","4","6","10"],2,"Від <h1> до <h6>."],
+["Який тег виділяє текст «маркером»?",["<mark>","<u>","<strike>","<code>"],0,"<mark> підсвічує текст жовтим."],
+["Який із тегів вважається застарілим у HTML5?",["<strong>","<big>","<mark>","<q>"],1,"<big> та <strike> замінюють CSS (font-size, text-decoration)."],
+["Який тег зберігає пробіли та переноси рядків так, як їх набрано?",["<p>","<pre>","<br>","<abbr>"],1,"<pre> виводить текст у моноширинному шрифті без зміни форматування."],
+["Який тег використовують для абревіатури з поясненням у title?",["<abbr>","<q>","<mark>","<small>"],0,"<abbr title=\"...\">ПК</abbr> — підказка з’являється при наведенні."],
+["Скільки пробілів покаже браузер, якщо в тексті абзацу <p> набрати п’ять пробілів поспіль?",["П’ять","Жодного","Один","Залежить від тегу <br>"],2,"HTML об’єднує послідовні пробіли в один. Щоб зберегти їх, використовують <pre>."],
+["Який запис вкладення тегів правильний?",["<b><i>текст</b></i>","<b><i>текст</i></b>","<b><i>текст</b>","<i><b>текст</i>"],1,"Теги закриваються у зворотному порядку."]];
+let qd=0;
+$("#quiz").innerHTML=Q.map((q,i)=>`<div class="q"><p>${i+1}. ${q[0].replace(/</g,"&lt;")}</p>${q[1].map((o,k)=>`<button class="btn opt" data-q="${i}" data-k="${k}">${o.replace(/</g,"&lt;")}</button>`).join("")}<div class="fb" id="fb${i}"></div></div>`).join("");
+document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+ const i=+b.dataset.q,k=+b.dataset.k,box=b.parentElement;
+ if(box.dataset.done)return;box.dataset.done=1;qd++;att[1]=qd;
+ const ok=k==Q[i][2];
+ box.querySelectorAll(".opt").forEach(o=>{if(+o.dataset.k==Q[i][2])o.classList.add("ok");});
+ if(!ok)b.classList.add("no");else sc[1]++;
+ $("#fb"+i).textContent=(ok?"✔ Так. ":"✘ Ні. ")+Q[i][3];
+ $("#qres").textContent=`Правильно: ${sc[1]} з ${Q.length}`+(qd==Q.length?" — тест завершено":"");upd()});
+
+/* 3. Допиши код */
+const F=[
+["Абзац","<[]>Текст уроку</[]>",["p"]],
+["Нижній індекс","H<[]>2</[]>O",["sub"]],
+["Верхній індекс","x<[]>2</[]>",["sup"]],
+["Виділення маркером","<[]>важливо</[]>",["mark"]],
+["Коротка цитата","<[]>Вчіться!</[]>",["q"]],
+["Перенос рядка","Рядок 1<[]>Рядок 2",["br"]],
+["Наголос за змістом","<[]>саме тут</[]>",["em"]],
+["Заголовок 2 рівня","<[]>Розділ</[]>",["h2"]],
+["Абревіатура з поясненням","<[] title=\"Всесвітня організація охорони здоров’я\">ВООЗ</[]>",["abbr"]],
+["Форматований текст зі збереженням рядків","<[]>a = 1\nb = 2</[]>",["pre"]],
+["Контактні дані","<[]>м. Київ, вул. Шевченка, 1</[]>",["address"]],
+["Довга цитата з відступом","<[]>Довгий уривок тексту…</[]>",["blockquote"]]];
+const DIST=["b","u","small","code","h1","strike"];
+const esc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+$("#fill").innerHTML=F.map((f,i)=>{const p=f[1].split("[]");
+ return `<div><span class="hint">${f[0]}</span><div class="line code">${esc(p[0])}<span class="slot" data-i="${i}" role="group" aria-label="Пропуск: ${f[0]}"></span>${esc(p[1])}${p.length>2?`<span class="mir" data-i="${i}">…</span>${esc(p[2])}`:""}</div></div>`}).join("");
+const bank=$("#bank");
+const mk=v=>{const c=document.createElement("span");c.className="chip";c.dataset.v=v;c.tabIndex=0;c.textContent="<"+v+">";return c};
+[...F.map(f=>f[2][0]),...DIST].sort(()=>Math.random()-.5).forEach(v=>bank.append(mk(v)));
+function sync(){document.querySelectorAll(".slot").forEach(s=>s.className="slot");
+ document.querySelectorAll(".mir").forEach(m=>{const c=document.querySelector(`.slot[data-i="${m.dataset.i}"]`).firstElementChild;m.textContent=c?c.dataset.v:"…"})}
+function place(c,t){if(t.classList.contains("slot")){const o=t.firstElementChild;if(o&&o!==c)bank.append(o);t.append(c)}else bank.append(c);sync()}
+let sel=null,drag=null;
+function clickChip(c){if(c.parentElement.classList.contains("slot")){place(c,bank);return}
+ if(sel&&sel!==c)sel.classList.remove("sel");c.classList.toggle("sel");sel=c.classList.contains("sel")?c:null}
+document.addEventListener("pointerdown",e=>{const c=e.target.closest(".chip");if(!c)return;drag={c,x:e.clientX,y:e.clientY,g:null}});
+document.addEventListener("pointermove",e=>{if(!drag)return;
+ if(!drag.g){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;
+  const g=drag.c.cloneNode(true);g.className="chip ghost";document.body.append(g);drag.g=g;drag.c.classList.add("held")}
+ drag.g.style.left=e.clientX+"px";drag.g.style.top=e.clientY+"px"});
+document.addEventListener("pointerup",e=>{if(!drag)return;const{c,g}=drag;drag=null;
+ if(g){g.remove();c.classList.remove("held");const t=document.elementFromPoint(e.clientX,e.clientY);place(c,(t&&t.closest(".slot"))||bank)}
+ else clickChip(c)});
+document.addEventListener("pointercancel",()=>{if(drag){if(drag.g)drag.g.remove();drag.c.classList.remove("held");drag=null}});
+document.addEventListener("keydown",e=>{const c=e.target.closest&&e.target.closest(".chip");if(c&&(e.key=="Enter"||e.key==" ")){e.preventDefault();clickChip(c)}});
+$("#fill").addEventListener("click",e=>{const s=e.target.closest(".slot");if(s&&sel&&!e.target.closest(".chip")){sel.classList.remove("sel");place(sel,s);sel=null}});
+$("#fchk").onclick=()=>{let n=0;document.querySelectorAll(".slot").forEach(s=>{const c=s.firstElementChild,ok=!!c&&F[s.dataset.i][2].includes(c.dataset.v);if(ok)n++;s.className="slot "+(ok?"ok":"no")});sc[2]=n;att[2]=F.length;$("#fres").textContent=`Правильно: ${n} з ${F.length}`;upd()};
+$("#freset").onclick=()=>{document.querySelectorAll(".slot .chip").forEach(c=>bank.append(c));sync();$("#fres").textContent=""};
+
+/* 4. Практика */
+const R=[["h1",["h1"]],["p",["p"]],["b або strong",["b","strong"]],["i або em",["i","em"]],["mark",["mark"]],["q",["q"]],["sub",["sub"]],["sup",["sup"]],["br",["br"]],["blockquote",["blockquote"]],["pre",["pre"]],["abbr",["abbr"]]];
+const ed=$("#ed"),pv=$("#pv");
+const render=()=>{pv.srcdoc='<meta charset="utf-8"><body style="font-family:Georgia,serif;margin:10px">'+ed.value};
+ed.oninput=render;render();
+$("#pchk").onclick=()=>{
+ const d=new DOMParser().parseFromString(ed.value,"text/html");let n=0;
+ $("#ck").innerHTML=R.map(r=>{const ok=r[1].some(t=>d.body.querySelector(t));if(ok)n++;return `<li class="${ok?"ok":"no"}">${ok?"✔":"✘"} &lt;${r[0]}&gt;</li>`}).join("");
+ sc[3]=n;att[3]=R.length;$("#pres").textContent=`Використано тегів: ${n} з ${R.length}`;upd()};
+
+/* 5. Підсумок */
+function drawSummary(){
+ const cv=$("#cv"),c=cv.getContext("2d"),W=900,H=660,FN='"Segoe UI",Roboto,Arial,sans-serif',SF='Georgia,"Times New Roman",serif';
+ const rr=(x,y,w,h,q)=>{c.beginPath();c.moveTo(x+q,y);c.arcTo(x+w,y,x+w,y+h,q);c.arcTo(x+w,y+h,x,y+h,q);c.arcTo(x,y+h,x,y,q);c.arcTo(x,y,x+w,y,q);c.closePath()};
+ const t=(txt,x,y,sz,col,w,al,f)=>{c.font=`${w||400} ${sz}px ${f||FN}`;c.fillStyle=col;c.textAlign=al||"left";c.fillText(txt,x,y)};
+ c.clearRect(0,0,W,H);c.fillStyle="#f5f7fb";c.fillRect(0,0,W,H);
+ c.fillStyle="#2456d6";c.fillRect(0,0,W,110);
+ t("Текстові теги HTML — підсумок",40,56,32,"#fff",700,"left",SF);
+ t("Веб-дизайн · 11 клас",40,90,18,"#dbe6ff");
+ const name=nameStr();
+ t("Учень: "+(name||"—"),40,152,24,"#1b2333",600);
+ t(new Date().toLocaleDateString("uk-UA"),860,152,20,"#5b667a",400,"right");
+ t("Етап",40,200,18,"#5b667a");t("Бали",330,200,18,"#5b667a");t("Помилки",450,200,18,"#5b667a");t("Виконання",570,200,18,"#5b667a");
+ c.fillStyle="#d5dbe6";c.fillRect(40,212,820,2);
+ const TOT=[M.length,Q.length,F.length,R.length],NM=["Зіставлення","Тест","Допиши код","Практика"];
+ let S=0,T=0,E=0,done=0,worst=-1,wr=0;
+ for(let i=0;i<4;i++){
+  const y=256+i*62,tot=TOT[i],sco=sc[i],at=att[i],err=at?at-sco:null,ratio=sco/tot;
+  S+=sco;T+=tot;if(at){done++;E+=err;const er=err/at;if(er>wr){wr=er;worst=i}}
+  t(NM[i],40,y,24,"#1b2333",600);
+  if(!at)t("не виконано",40,y+20,14,"#8a94a8");
+  else if(i==1&&at<tot)t(`без відповіді: ${tot-at}`,40,y+20,14,"#8a94a8");
+  t(`${sco} / ${tot}`,330,y,24,"#1b2333");
+  t(err===null?"—":String(err),450,y,24,err?"#b3261e":(err===0?"#17803d":"#8a94a8"),600);
+  c.fillStyle="#e3e8f2";rr(570,y-18,290,20,10);c.fill();
+  if(sco>0){c.fillStyle=ratio>=.8?"#17803d":ratio>=.5?"#2456d6":"#d98a1a";rr(570,y-18,Math.max(20,290*ratio),20,10);c.fill()}
+ }
+ c.fillStyle="#d5dbe6";c.fillRect(40,468,820,2);
+ const pct=T?Math.round(S/T*100):0;
+ t(`Разом: ${S} / ${T} балів`,40,520,32,"#1b2333",700);
+ t(pct+"%",860,524,48,"#2456d6",700,"right",SF);
+ t(`Усього помилок: ${E}   ·   Виконано етапів: ${done} з 4`,40,562,20,"#5b667a");
+ let v;
+ if(!done)v="Виконай завдання, щоб побачити результат.";
+ else if(pct>=90)v="Відмінний результат: теги засвоєно добре.";
+ else if(pct>=70)v="Добрий результат."+(worst>=0?` Повтори етап «${NM[worst]}».`:"");
+ else if(pct>=50)v="Непогано, але є що повторити."+(worst>=0?` Почни з етапу «${NM[worst]}».`:"");
+ else v="Варто повторити теги."+(worst>=0?` Почни з етапу «${NM[worst]}».`:"");
+ t(v,40,606,22,"#1b2333",600);
+ if(done)t(`Орієнтовна оцінка за 12-бальною шкалою: ${Math.max(1,Math.round(pct/100*12))}`,40,640,18,"#5b667a");
+}
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycby5JuoBDhkyMaeFKb3bjrhbHsIZIhM4f741IKFEZzoxtfYlNnycEXdbmtxjUtl1QQYyRw/exec",KEY="змініть-на-свій-ключ",TASK="Текстові теги";
+const nameStr=()=>{const v=q=>($(q)?$(q).value.trim():"");return [v("#sn"),v("#fn")].filter(Boolean).join(" ")+(v("#cl")?", "+v("#cl"):"")};
+function summData(){const NM=["Зіставлення","Тест","Допиши код","Практика"],TOT=[M.length,Q.length,F.length,R.length];let S=0,T=0,E=0,done=0;const o={};
+ for(let i=0;i<4;i++){const at=att[i],sco=sc[i],err=at?at-sco:null;S+=sco;T+=TOT[i];if(at){done++;E+=err}
+  o[NM[i]]=at?sco+" з "+TOT[i]:"не виконано";o["Помилок: "+NM[i]]=at?err:"—"}
+ return{o,S,T,E,done,pct:T?Math.round(S/T*100):0}}
+async function sendRes(){const m=$("#sres"),b=$("#snd"),sn=$("#sn").value.trim(),fn=$("#fn").value.trim(),cl=$("#cl").value.trim();
+ if(!sn||!fn||!cl){m.textContent="Спершу заповни прізвище, ім’я та клас.";return}
+ const D=summData(),X={"Прізвище":sn,"Ім'я":fn,"Клас":cl,"Бали":D.S,"Макс. балів":D.T,"Відсоток":D.pct,...D.o,"Усього помилок":D.E,"Виконано етапів":D.done+" з 4","Орієнтовна оцінка (12-бальна)":D.done?Math.max(1,Math.round(D.pct/100*12)):"—"};
+ b.disabled=true;m.textContent="Надсилання…";
+ try{drawSummary();await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({key:KEY,task:TASK,fields:X,image:{name:"tekstovi-tehy_"+sn+"_"+fn+".png",data:$("#cv").toDataURL("image/png").split(",")[1]}})});m.textContent="Результат надіслано вчителю ✔"}
+ catch(x){b.disabled=false;m.textContent="Не вдалося надіслати. Перевірте інтернет і спробуйте ще раз."}}
+$("#snd").onclick=sendRes;
+$("#go").onclick=()=>{const sn=$("#sn").value.trim(),fn=$("#fn").value.trim(),cl=$("#cl").value.trim();
+ if(!sn||!fn||!cl){$("#regmsg").textContent="Спершу заповни прізвище, ім’я та клас.";return}
+ try{fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",keepalive:true,body:JSON.stringify({key:KEY,task:"Приєднання",fields:{"ПІБ учня":sn+" "+fn,"Клас":cl,"Назва проєкту":TASK}})}).catch(()=>{})}catch(x){}
+ document.body.classList.add("go")};
+["#sn","#fn","#cl"].forEach(q=>$(q).addEventListener("keydown",e=>{if(e.key=="Enter")$("#go").click()}));
+window.drawSummary=drawSummary;
+["#sn","#fn","#cl"].forEach(q=>$(q).oninput=drawSummary);
+$("#save").onclick=async()=>{
+ drawSummary();const out=$("#sres");
+ const blob=await new Promise(res=>$("#cv").toBlob(res,"image/png"));
+ const fname="pidsumok-tekstovi-tehy.png";
+ let dl=null;try{dl=window.claude&&claude.use?await claude.use("downloads"):null}catch(e){}
+ if(dl){try{await dl.save({filename:fname,data:blob});out.textContent="Збережено"}catch(e){out.textContent=e&&e.code=="declined"?"Збереження скасовано":"Не вдалося зберегти. Натисни й утримуй зображення або клацни правою кнопкою та обери «Зберегти зображення»."}}
+ else{const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fname;document.body.append(a);a.click();a.remove();out.textContent="Якщо файл не завантажився, клацни правою кнопкою на зображенні й обери «Зберегти зображення»."}
+};
+drawSummary();
+</script>
+</body>
+</html>
